@@ -10,7 +10,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-2 mb-2">
               <span className="bg-gradient-to-br from-yellow-200 via-yellow-50 to-blue-50 rounded-full shadow-2xl p-2 border border-blue-300">
                 <img
-                  src="/uploads/Ayawin logo.jpeg"
+                  src="/uploads/Logoo.jpeg"  // ✅ Fixed path (removed "public/")
                   alt="AyaWin Logo"
                   className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-contain"
                   style={{ boxShadow: "0 4px 20px 0 rgba(0,0,0,0.10)" }}

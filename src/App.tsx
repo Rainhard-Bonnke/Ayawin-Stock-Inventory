@@ -8,12 +8,11 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
+import OurWorkPage from "./pages/OurWorkPage";
 import ContactPage from "./pages/ContactPage";
 import QuotePage from "./pages/QuotePage";
 import NotFound from "./pages/NotFound";
-
-// Example: Import your Supabase test component (optional)
-// import MyTableData from "@/components/MyTableData";
+import LandingPage from "./pages/Landing"; // 👈 add this
 
 const queryClient = new QueryClient();
 
@@ -24,14 +23,17 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Landing Page comes first */}
+          <Route path="/" element={<LandingPage />} />
+
+          {/* Main website pages under Layout */}
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
+            <Route path="home" element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="services" element={<ServicesPage />} />
+            <Route path="our-work" element={<OurWorkPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="quote" element={<QuotePage />} />
-            {/* Example: Add a route to test Supabase connection */}
-            {/* <Route path="test-supabase" element={<MyTableData />} /> */}
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

@@ -22,38 +22,27 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/supabaseClient";
 import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
 
 const SERVICE_ID = "service_00dsj1r";
-const TEMPLATE_ID = "template_ymk3gss";
+const TEMPLATE_ID_CLIENT = "template_ymk3gss";
+const TEMPLATE_ID_ADMIN = "template_j5wedzy";
 const PUBLIC_KEY = "lwlF6RN3rfPvwuZKL";
-const WHATSAPP_NUMBER = "254791259510";
+const whatsappLink =
+  "https://wa.me/254791259510?text=Hello%20%F0%9F%91%8B%0AThanks%20for%20contacting%20AyaWin%20Stock%20Solutions.%20We%E2%80%99ll%20get%20back%20to%20you%20shortly.%0A%F0%9F%93%9E%20Urgent%3F%20Call%200791%20259%20510.";
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phone: z.string().min(10, {
-    message: "Phone number must be at least 10 characters.",
-  }),
-  company: z.string().min(2, {
-    message: "Company name must be at least 2 characters.",
-  }),
-  service: z.string().min(1, {
-    message: "Please select a service.",
-  }),
-  businessSize: z.string().min(1, {
-    message: "Please select your business size.",
-  }),
-  message: z.string().min(10, {
-    message: "Please provide more details about your needs.",
-  }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().min(10, { message: "Phone number must be at least 10 characters." }),
+  company: z.string().min(2, { message: "Company name must be at least 2 characters." }),
+  service: z.string().min(1, { message: "Please select a service." }),
+  businessSize: z.string().min(1, { message: "Please select your business size." }),
+  message: z.string().min(10, { message: "Please provide more details about your needs." }),
 });
 
 const QuotePage = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -66,7 +55,7 @@ const QuotePage = () => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values) {
     const payload = {
       name: values.name,
       email: values.email,
@@ -77,29 +66,10 @@ const QuotePage = () => {
       message: values.message,
     };
 
-    // Save to Supabase
     const { error } = await supabase.from("quote_requests").insert([payload]);
 
-    // Send email via EmailJS
-    try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          name: values.name,
-          email: values.email,
-          phone: values.phone,
-          company: values.company,
-          service: values.service,
-          business_size: values.businessSize,
-          message: values.message,
-          title: values.service, // Required for your EmailJS template
-        },
-        PUBLIC_KEY
-      );
-    } catch (e) {
-      toast.error("Failed to send email notification.");
-    }
+    await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, payload, PUBLIC_KEY);
+    await emailjs.send(SERVICE_ID, TEMPLATE_ID_CLIENT, payload, PUBLIC_KEY);
 
     if (error) {
       toast.error("Failed to submit quote. Please try again.");
@@ -109,25 +79,57 @@ const QuotePage = () => {
     }
   }
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
   return (
     <div>
-      {/* Logo at the top */}
       <div className="flex justify-center items-center py-6">
         <img
-          src="/uploads/Ayawin logo.jpeg"
+          src="public/uploads/Logoo.jpeg"
           alt="Ayawin Logo"
           className="w-32 h-auto"
         />
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section with Animation */}
       <section className="bg-blue-600 py-16 md:py-24 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Request a Quote</h1>
-          <p className="text-xl max-w-2xl mx-auto">
+        <motion.div
+          className="container mx-auto px-4 md:px-6 text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-6"
+            variants={itemVariants}
+          >
+            Request a Quote
+          </motion.h1>
+          <motion.p
+            className="text-2xl font-semibold text-blue-200 mb-2"
+            variants={itemVariants}
+          >
+            Your Stock Our Solution
+          </motion.p>
+          <motion.p
+            className="text-xl max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
             Tell us about your business needs and we'll provide you with a customized quote.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Quote Form Section */}
@@ -137,8 +139,17 @@ const QuotePage = () => {
             <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
               <h2 className="text-2xl font-bold mb-6 text-center">Get Your Free Quote</h2>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    variants={itemVariants}
+                  >
                     <FormField
                       control={form.control}
                       name="name"
@@ -165,8 +176,12 @@ const QuotePage = () => {
                         </FormItem>
                       )}
                     />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  </motion.div>
+
+                  <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    variants={itemVariants}
+                  >
                     <FormField
                       control={form.control}
                       name="phone"
@@ -193,8 +208,12 @@ const QuotePage = () => {
                         </FormItem>
                       )}
                     />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  </motion.div>
+
+                  <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    variants={itemVariants}
+                  >
                     <FormField
                       control={form.control}
                       name="service"
@@ -244,38 +263,58 @@ const QuotePage = () => {
                         </FormItem>
                       )}
                     />
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Details About Your Needs</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Please describe your project, timeline, and any specific requirements"
-                            rows={5}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" size="lg" className="w-full">Request Quote</Button>
-                </form>
+                  </motion.div>
+
+                  <motion.div variants={itemVariants}>
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Details About Your Needs</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Please describe your project, timeline, and any specific requirements"
+                              rows={5}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
+
+                  {/* Submit Button with hover/tap scale */}
+                  <motion.div variants={itemVariants}>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button type="submit" size="lg" className="w-full">
+                        Request Quote
+                      </Button>
+                    </motion.div>
+                  </motion.div>
+                </motion.form>
               </Form>
             </div>
+
+            {/* WhatsApp Button with hover/tap scale */}
             <div className="mt-8 text-center">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              <motion.a
+                href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-3 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full shadow hover:bg-green-600 transition font-semibold text-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M16.7 13.1c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.4-.8.9-.9 1-.2.1-.4.1-.7 0-.3-.1-1.2-.4-2.3-1.3-.8-.7-1.4-1.5-1.6-1.8-.2-.3-.1-.5.1-.7.2-.2.4-.5.6-.7.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7 0-.2-.7-1.7-.9-2-.2-.3-.4-.3-.7-.3-.2 0-.5 0-.7.2-.2.2-1.1 1.1-1.1 2.7 0 1.6 1.2 3.1 1.4 3.3.2.2 2.3 3.6 5.6 3.6 1.6 0 2.5-1 2.7-1.3.2-.3.2-.5.2-.7 0-.2-.2-.4-.4-.6z" />
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
                 Chat with us on WhatsApp
-              </a>
+              </motion.a>
             </div>
+
             <div className="mt-8 text-center">
               <p className="text-lg text-gray-600">
                 Need immediate assistance? Call us at{" "}
@@ -285,47 +324,6 @@ const QuotePage = () => {
                 >
                   +254 791259510
                 </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="section-padding bg-blue-50">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-            <p className="text-lg text-gray-600">
-              Our simple process for providing you with tailored inventory services
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg text-center">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Submit Request</h3>
-              <p className="text-gray-600">
-                Fill out the quote request form with details about your business needs.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg text-center">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Consultation</h3>
-              <p className="text-gray-600">
-                We'll contact you to discuss specific requirements and answer questions.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg text-center">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Get Your Quote</h3>
-              <p className="text-gray-600">
-                Receive a customized quote based on your business's unique needs.
               </p>
             </div>
           </div>

@@ -4,7 +4,7 @@ const Index = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center max-w-xl mx-auto p-8 bg-white rounded-lg shadow">
         <img
-          src="/uploads/Ayawin logo.png"
+          src="public/uploads/Logoo.jpeg"
           alt="Ayawin Stock Solution Logo"
           className="mx-auto mb-6 w-24 h-24 object-contain"
         />
@@ -22,7 +22,7 @@ const Index = () => {
           <li>Auditing</li>
         </ul>
         <p className="text-gray-500 text-sm">
-          Contact us at <a href="mailto:info@ayawin.com" className="text-blue-600 underline">info@ayawin.com</a>
+          Contact us at <a href="mailto:ayawin.ke@gmail.com" className="text-blue-600 underline">ayawin.ke@gmail.com</a>
         </p>
       </div>
     </div>
