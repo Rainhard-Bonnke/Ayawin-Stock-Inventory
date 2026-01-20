@@ -4,7 +4,7 @@ const Index = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center max-w-xl mx-auto p-8 bg-white rounded-lg shadow">
         <img
-          src="public/uploads/Logoo.jpeg"
+          src="/uploads/Logoo.jpeg"
           alt="Ayawin Stock Solution Logo"
           className="mx-auto mb-6 w-24 h-24 object-contain"
         />
