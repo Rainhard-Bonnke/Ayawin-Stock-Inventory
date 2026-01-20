@@ -139,23 +139,23 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <SolutionItem
               id="01"
-              title="Stock Audits"
-              desc="Physical counting and verification of your stock."
+              title="Stock Takes"
+              desc="Accurate inventory counting and reconciliation."
             />
             <SolutionItem
               id="02"
-              title="Tech Assets"
-              desc="Managing your IT equipment and hardware."
+              title="Stock Management"
+              desc="Real-time tracking and full inventory control."
             />
             <SolutionItem
               id="03"
-              title="KRA Labels"
-              desc="Tax compliance and sticker management services."
+              title="KRA Stickers"
+              desc="Placement and management of KRA-compliant labels."
             />
             <SolutionItem
               id="04"
-              title="System Sync"
-              desc="Connecting your warehouse to your office systems."
+              title="Tech Solutions"
+              desc="Custom ERPs and business software."
             />
           </div>
 

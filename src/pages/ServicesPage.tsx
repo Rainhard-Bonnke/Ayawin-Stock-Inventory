@@ -63,49 +63,63 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             <ServiceModule
               id="01"
-              title="Stock Taking"
+              title="Stock Takes"
               image="/uploads/ayawin at work7.jpeg"
-              description="We count your physical stock to verify your records and identify any missing items."
-              details={["Variance Identification", "Record Reconciliation", "Digital Reports"]}
+              description="Accurate inventory counting and reconciliation."
+              details={["Physical Count", "Variance Check", "Final Report"]}
             />
             <ServiceModule
               id="02"
-              title="Inventory Management"
+              title="Stock Management"
               image="/uploads/ayawin at work8.jpeg"
-              description="Complete management of your warehouse and retail stock from arrival to sale."
-              details={["Stock Organization", "Waste Reduction", "Replenishment"]}
+              description="Real-time tracking, low-stock alerts, and full inventory control."
+              details={["Tracking", "Alerts", "Control"]}
             />
             <ServiceModule
               id="03"
-              title="Warehouse Organization"
+              title="Stock Arrangement"
               image="/uploads/ayawin at work9.jpeg"
-              description="Organizing your warehouse layout to make it easier to find and move products."
-              details={["Better Flow", "Easy Access", "FIFO System"]}
+              description="Organizing your stock for better flow and tracking."
+              details={["Layout Design", "FIFO", "Easy Access"]}
             />
             <ServiceModule
               id="04"
-              title="KRA Tax Compliance"
-              image="/uploads/kra.png"
-              description="Helping you manage KRA tax labels and ensure your inventory is compliant."
-              details={["ETR Integration", "Label Management", "Audit Ready"]}
+              title="KRA Stickers"
+              image="/uploads/ayawin at work5.jpeg"
+              description="Placement and management of KRA-compliant labels."
+              details={["Labeling", "Compliance", "Verification"]}
             />
             <ServiceModule
               id="05"
-              title="System Integration"
-              image="/uploads/erp.png"
-              description="Connecting your physical warehouse operations with your computer systems."
-              details={["Real-time Updates", "Accurate Data", "Seamless Connection"]}
+              title="Data Entry"
+              image="/uploads/ayawin at work3.jpeg"
+              description="Fast and accurate data input for smooth operations."
+              details={["Speed", "Accuracy", "Digitization"]}
             />
             <ServiceModule
               id="06"
-              title="Asset Verification"
-              image="/uploads/ayawin at work11.jpeg"
-              description="Checking and verifying your fixed assets and equipment to ensure everything is accounted for."
-              details={["Asset Tagging", "Value Check", "Physical Count"]}
+              title="Accounting"
+              image="/uploads/ayawin at work6.jpeg"
+              description="Basic bookkeeping and financial data management."
+              details={["Bookkeeping", "Records", "Analysis"]}
+            />
+            <ServiceModule
+              id="07"
+              title="Auditing"
+              image="/uploads/ayawin at work4.jpeg"
+              description="Internal reviews to catch errors and ensure compliance."
+              details={["Internal Audit", "Error Check", "Process Review"]}
+            />
+            <ServiceModule
+              id="08"
+              title="Tech Business Solutions"
+              image="/uploads/erp.png"
+              description="Custom ERPs, bookkeeping software, and business tech."
+              details={["Custom ERP", "Software", "Integration"]}
             />
           </motion.div>
         </div>
