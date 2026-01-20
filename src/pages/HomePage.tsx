@@ -68,7 +68,7 @@ const HomePage = () => {
                 className="max-w-2xl mx-auto"
               >
                 <p className="text-slate-400 text-xl font-medium leading-relaxed mb-10">
-                  We provide accurate stock taking and inventory management services to help your business grow and stay organized.
+                  Inventory audits, warehouse optimization, bookkeeping, and custom ERP systems. We handle everything from physical stock counts to building the technology that runs your business.
                 </p>
                 <div className="flex flex-wrap justify-center gap-6">
                   <Link to="/quote" className="btn-bespoke group">
@@ -111,7 +111,7 @@ const HomePage = () => {
               <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">Our Mission</span>
               <h2 className="text-slate-900 leading-tight">More Than <br />Just <br />Counting.</h2>
               <p className="text-xl text-slate-500 leading-relaxed font-medium">
-                We provide precise verification of your stock to minimize losses and maximize profit. Our team ensures that your records match what is actually on your shelves.
+                We're not just counters—we're inventory strategists. From end-to-end physical audits to implementing cloud-based systems, we help businesses across East Africa eliminate stock losses, streamline operations, and build the infrastructure they need to scale confidently.
               </p>
               <div className="pt-6">
                 <Link to="/about" className="text-slate-900 font-bold uppercase tracking-wider border-b-2 border-amber-400 pb-2 hover:text-blue-600 transition-colors">
@@ -132,30 +132,30 @@ const HomePage = () => {
               <h2 className="text-white mt-4">What We Do.</h2>
             </div>
             <p className="text-slate-400 max-w-sm text-lg font-medium">
-              We offer professional inventory services for modern businesses.
+              Complete inventory management from physical audits to financial records, warehouse optimization, and advanced ERP systems.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <SolutionItem
               id="01"
-              title="Stock Takes"
-              desc="Accurate inventory counting and reconciliation."
+              title="Physical Counts"
+              desc="Dual-verified inventory audits with detailed variance reporting."
             />
             <SolutionItem
               id="02"
-              title="Stock Management"
-              desc="Real-time tracking and full inventory control."
+              title="Warehouse Organization"
+              desc="FIFO implementation and ABC analysis for optimal efficiency."
             />
             <SolutionItem
               id="03"
-              title="KRA Stickers"
-              desc="Placement and management of KRA-compliant labels."
+              title="Bookkeeping Services"
+              desc="Financial record management aligned with inventory movements."
             />
             <SolutionItem
               id="04"
-              title="Tech Solutions"
-              desc="Custom ERPs and business software."
+              title="Custom ERP Systems"
+              desc="Real-time tracking, analytics, and complete business integration."
             />
           </div>
 
@@ -291,7 +291,7 @@ const HomePage = () => {
             className="max-w-4xl mx-auto"
           >
             <p className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tighter mb-12">
-              "Ayawin Stock Solutions didn't just count our inventory; they revolutionized our warehouse logic. Their precision is unmatched."
+              "Ayawin didn't just count our inventory—they rebuilt our entire warehouse logic, uncovered hidden stock losses, and gave us a system we actually trust."
             </p>
             <div className="flex items-center justify-center gap-4">
               <img
@@ -312,13 +312,13 @@ const HomePage = () => {
       <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 pointer-events-none" />
         <div className="container-custom relative z-10 text-center">
-          <h2 className="text-white mb-10 max-w-3xl mx-auto leading-tight">Accurate Records Start Here.</h2>
+          <h2 className="text-white mb-10 max-w-3xl mx-auto leading-tight">Stop Losing Money to Inventory Problems.</h2>
           <div className="flex flex-wrap justify-center gap-8">
             <Link to="/quote" className="btn-bespoke">
               Request Your Audit
             </Link>
             <Link to="/contact" className="px-10 py-5 border-2 border-white/20 rounded-full font-bold uppercase tracking-wider hover:border-amber-400 hover:text-amber-400 transition-all">
-              Contact Us
+              Schedule a Consultation
             </Link>
           </div>
         </div>

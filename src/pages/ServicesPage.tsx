@@ -42,14 +42,14 @@ const ServicesPage = () => {
             className="text-center"
           >
             <span className="text-amber-500 font-bold uppercase tracking-[0.2em] text-sm mb-6 block">
-              Our Services
+              Complete Inventory Solutions
             </span>
             <h1 className="text-white mb-6">
-              Expert <br />
-              <span className="gradient-text from-blue-400 via-white to-amber-400">Inventory Solutions.</span>
+              From Counts <br />
+              <span className="gradient-text from-blue-400 via-white to-amber-400">to Financial Records.</span>
             </h1>
             <p className="max-w-3xl mx-auto text-slate-400 text-xl font-medium leading-relaxed">
-              Professional services designed to help your business manage stock efficiently and accurately.
+              Whether you need physical audits, warehouse organization, compliance support, or advanced ERP systems, we deliver end-to-end inventory management that transforms how you run your business.
             </p>
           </motion.div>
         </div>
@@ -67,59 +67,59 @@ const ServicesPage = () => {
           >
             <ServiceModule
               id="01"
-              title="Stock Takes"
+              title="Physical Stock Takes"
               image="/uploads/ayawin at work7.jpeg"
-              description="Accurate inventory counting and reconciliation."
-              details={["Physical Count", "Variance Check", "Final Report"]}
+              description="Complete cycle counts with dual verification. We physically count every item, compare against your system records, identify discrepancies, and generate detailed variance reports. Perfect for year-end audits, regulatory compliance, or warehouse closures."
+              details={["Dual Count Method", "System Reconciliation", "Variance Report"]}
             />
             <ServiceModule
               id="02"
-              title="Stock Management"
-              image="/uploads/ayawin at work8.jpeg"
-              description="Real-time tracking, low-stock alerts, and full inventory control."
-              details={["Tracking", "Alerts", "Control"]}
+              title="Stock Arrangement & Optimization"
+              image="/uploads/ayawin at work9.jpeg"
+              description="Strategic warehouse organization using FIFO and ABC analysis. We redesign your layout to reduce picking time, minimize stock loss, improve accessibility, and create an efficient audit trail. Ideal for retail, distribution, and manufacturing facilities."
+              details={["FIFO Implementation", "ABC Classification", "Layout Optimization"]}
             />
             <ServiceModule
               id="03"
-              title="Stock Arrangement"
-              image="/uploads/ayawin at work9.jpeg"
-              description="Organizing your stock for better flow and tracking."
-              details={["Layout Design", "FIFO", "Easy Access"]}
+              title="KRA Compliance & Labeling"
+              image="/uploads/ayawin at work5.jpeg"
+              description="Full KRA sticker placement and inventory management. We ensure every item is properly labeled and tracked for tax compliance. Includes barcode integration, serialization where required, and regular verification audits."
+              details={["Barcode Integration", "Tax Compliance", "Verification"]}
             />
             <ServiceModule
               id="04"
-              title="KRA Stickers"
-              image="/uploads/ayawin at work5.jpeg"
-              description="Placement and management of KRA-compliant labels."
-              details={["Labeling", "Compliance", "Verification"]}
+              title="Data Entry & Digitization"
+              image="/uploads/ayawin at work3.jpeg"
+              description="Convert manual inventory records into organized digital systems. Our data entry specialists ensure 99.9% accuracy, clean data formatting, and seamless integration with your existing systems. Fast turnaround without compromising quality."
+              details={["99.9% Accuracy", "Digital Systems", "Fast Turnaround"]}
             />
             <ServiceModule
               id="05"
-              title="Data Entry"
-              image="/uploads/ayawin at work3.jpeg"
-              description="Fast and accurate data input for smooth operations."
-              details={["Speed", "Accuracy", "Digitization"]}
+              title="Bookkeeping Services"
+              image="/uploads/ayawin at work6.jpeg"
+              description="Professional bookkeeping and financial record management aligned with inventory movements. We track purchases, sales, adjustments, and maintain organized ledgers for audit readiness. Includes reconciliation and financial statement preparation."
+              details={["Ledger Management", "Reconciliation", "Audit Ready"]}
             />
             <ServiceModule
               id="06"
-              title="Accounting"
-              image="/uploads/ayawin at work6.jpeg"
-              description="Basic bookkeeping and financial data management."
-              details={["Bookkeeping", "Records", "Analysis"]}
+              title="Internal & Compliance Audits"
+              image="/uploads/ayawin at work4.jpeg"
+              description="Comprehensive internal audits to identify inefficiencies, prevent losses, and ensure regulatory compliance. We document processes, highlight risks, and provide actionable recommendations to strengthen your inventory controls."
+              details={["Process Documentation", "Risk Assessment", "Recommendations"]}
             />
             <ServiceModule
               id="07"
-              title="Auditing"
-              image="/uploads/ayawin at work4.jpeg"
-              description="Internal reviews to catch errors and ensure compliance."
-              details={["Internal Audit", "Error Check", "Process Review"]}
+              title="Inventory Management Systems"
+              image="/uploads/ayawin at work8.jpeg"
+              description="Real-time inventory tracking with barcode scanning, low-stock alerts, and dashboard analytics. Our integrated systems give you 24/7 visibility into stock levels, movement history, and predictive insights for better planning."
+              details={["Real-time Tracking", "Mobile Scanning", "Analytics Dashboard"]}
             />
             <ServiceModule
               id="08"
-              title="Tech Business Solutions"
+              title="Custom ERP Solutions"
               image="/uploads/erp.png"
-              description="Custom ERPs, bookkeeping software, and business tech."
-              details={["Custom ERP", "Software", "Integration"]}
+              description="Tailored enterprise resource planning software built for your business. Integrates inventory, accounting, procurement, and sales in one platform. We handle implementation, training, and ongoing support to ensure seamless adoption."
+              details={["Custom Build", "Full Integration", "24/7 Support"]}
             />
           </motion.div>
         </div>
@@ -137,16 +137,16 @@ const ServicesPage = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-white mb-10 leading-tight">Ready to Organize Your Stock?</h2>
+            <h2 className="text-white mb-10 leading-tight">Ready to Take Control of Your Inventory?</h2>
             <p className="text-slate-400 text-xl font-medium mb-12">
-              Our team is ready to help you improve your inventory accuracy and efficiency.
+              Whether you need a physical count, system implementation, or ongoing bookkeeping support, our team has the expertise and experience to deliver measurable results.
             </p>
             <div className="flex flex-wrap justify-center gap-8">
               <Link to="/quote" className="btn-bespoke">
-                Request a Quote
+                Request a Custom Quote
               </Link>
               <Link to="/contact" className="px-10 py-5 border-2 border-white/20 rounded-full text-white font-bold uppercase tracking-wider hover:border-amber-400 hover:text-amber-400 transition-all">
-                Contact Us
+                Schedule a Consultation
               </Link>
             </div>
           </motion.div>
