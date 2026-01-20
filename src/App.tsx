@@ -13,6 +13,8 @@ import ContactPage from "./pages/ContactPage";
 import QuotePage from "./pages/QuotePage";
 import NotFound from "./pages/NotFound";
 import LandingPage from "./pages/Landing"; // 👈 add this
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -23,19 +25,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          {/* Landing Page comes first */}
-          <Route path="/" element={<LandingPage />} />
-
-          {/* Main website pages under Layout */}
           <Route path="/" element={<Layout />}>
-            <Route path="home" element={<HomePage />} />
+            <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="services" element={<ServicesPage />} />
             <Route path="our-work" element={<OurWorkPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="quote" element={<QuotePage />} />
-            <Route path="*" element={<NotFound />} />
           </Route>
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

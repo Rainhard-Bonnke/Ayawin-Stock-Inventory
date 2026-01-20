@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* === Base Theme Variables === */
+/* === Bespoke Design System === */
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221 83% 53%;
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -23,17 +23,18 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 93% 47%;
+    /* Liquid Gold */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --ring: 221.2 83.2% 53.3%;
 
-    --radius: 0.75rem; /* made slightly rounder for modern look */
+    --radius: 1.5rem;
   }
 
   .dark {
@@ -67,65 +68,95 @@
   }
 }
 
-/* === Base Typography & Layout === */
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-feature-settings: "ss01", "ss03", "cv02", "cv04";
     line-height: 1.6;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%);
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', sans-serif;
+    @apply font-black tracking-tighter uppercase;
   }
 
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight;
+    @apply text-4xl md:text-6xl lg:text-7xl mb-8 leading-[0.9];
   }
 
   h2 {
-    @apply text-2xl md:text-3xl mb-4 leading-snug;
+    @apply text-3xl md:text-5xl mb-6 leading-none;
   }
 
   h3 {
-    @apply text-xl md:text-2xl mb-3;
+    @apply text-2xl md:text-3xl mb-4;
   }
 
   p {
-    @apply text-gray-700 mb-4;
+    @apply text-slate-600 mb-4 font-medium;
+    font-family: 'Inter', sans-serif;
   }
 
   a {
-    @apply text-primary hover:underline;
+    @apply text-primary no-underline transition-all duration-300;
   }
 }
 
-/* === Custom Utilities === */
+/* === Bespoke Utilities === */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 font-bold;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-blue-800 to-amber-600 font-black;
 }
 
 .section-padding {
-  @apply py-12 md:py-20;
+  @apply py-24 md:py-40;
 }
 
 .container-custom {
-  @apply container mx-auto px-4 md:px-6;
+  @apply container mx-auto px-6 md:px-12;
 }
 
-/* === New Helpers === */
-.btn-primary {
-  @apply inline-block px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium shadow hover:bg-indigo-700 transition;
+.glass-morphism {
+  @apply bg-white/40 backdrop-blur-xl border border-white/40 shadow-2xl;
 }
 
-.btn-secondary {
-  @apply inline-block px-6 py-3 rounded-lg bg-gray-100 text-gray-800 font-medium shadow hover:bg-gray-200 transition;
+.btn-bespoke {
+  @apply relative inline-flex items-center justify-center px-10 py-5 font-black uppercase tracking-tighter transition-all duration-500 rounded-full overflow-hidden;
+  background: #0f172a;
+  color: #fff;
 }
 
-.card-modern {
-  @apply bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition;
+.btn-bespoke:hover {
+  @apply -translate-y-1;
+  box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.4);
+  background: #2563eb;
+}
+
+.card-bespoke {
+  @apply bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm transition-all duration-700 hover:shadow-2xl hover:border-blue-200 hover:-translate-y-4;
+}
+
+.liquid-gold-border {
+  @apply relative;
+}
+
+.liquid-gold-border::after {
+  content: '';
+  @apply absolute -inset-[1px] bg-gradient-to-r from-blue-600 via-amber-400 to-blue-600 rounded-[inherit] -z-10 opacity-0 transition-opacity duration-500;
+}
+
+.liquid-gold-border:hover::after {
+  @apply opacity-100;
 }

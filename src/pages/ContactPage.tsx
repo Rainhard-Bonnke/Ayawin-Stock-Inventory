@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { Phone, Mail, MapPin, MessageSquare, Send, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 
 const formSchema = z.object({
@@ -79,107 +81,190 @@ const ContactPage = () => {
   }
 
   return (
-    <div>
-      <section className="bg-blue-600 py-16 md:py-24 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-2xl font-semibold text-blue-200 mb-2">Your Stock Our Solution</p>
-          <p className="text-xl max-w-2xl mx-auto">
-            Have a question or ready to get started? We're here to help!
-          </p>
+    <div className="bg-white min-h-screen">
+      {/* Bespoke Hero */}
+      <section className="pt-32 pb-16 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-600/10 via-transparent to-transparent" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/20 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <span className="text-amber-500 font-bold uppercase tracking-[0.2em] text-sm mb-6 block">
+              Contact Us
+            </span>
+            <h1 className="text-white mb-6">
+              Get In <br />
+              <span className="gradient-text from-blue-400 via-white to-amber-400">Touch.</span>
+            </h1>
+            <p className="max-w-3xl mx-auto text-slate-400 text-xl font-medium leading-relaxed">
+              Reach out for quotes, support, or general inquiries.
+            </p>
+          </motion.div>
         </div>
       </section>
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Full Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your full name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+
+      {/* Main Contact Grid */}
+      <section className="section-padding bg-white relative">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+
+            {/* Contact Information */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 space-y-12"
+            >
+              <div>
+                <h2 className="text-slate-900 mb-6 leading-none">Contact <br />Information.</h2>
+                <p className="text-lg text-slate-500 font-medium">
+                  We are here to help. Reach out to us directly through any of these channels.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                <ContactInfoBlock
+                  icon={<Phone className="h-6 w-6 text-blue-600" />}
+                  title="Phone Number"
+                  value="+254 791 259 510"
+                  link="tel:+254791259510"
                 />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email Address</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your email" type="email" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                <ContactInfoBlock
+                  icon={<Mail className="h-6 w-6 text-blue-600" />}
+                  title="Email Address"
+                  value="ayawin.ke@gmail.com"
+                  link="mailto:ayawin.ke@gmail.com"
                 />
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your phone number" type="tel" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                <ContactInfoBlock
+                  icon={<MapPin className="h-6 w-6 text-blue-600" />}
+                  title="Location"
+                  value="Nairobi, Kenya"
                 />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Your Message</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Type your message here..."
-                          className="min-h-[120px]"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full">Send Message</Button>
-              </form>
-            </Form>
-            <div className="mt-6 text-center">
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full shadow hover:bg-green-600 transition font-semibold text-lg"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M16.7 13.1c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.4-.8.9-.9 1-.2.1-.4.1-.7 0-.3-.1-1.2-.4-2.3-1.3-.8-.7-1.4-1.5-1.6-1.8-.2-.3-.1-.5.1-.7.2-.2.4-.5.6-.7.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7 0-.2-.7-1.7-.9-2-.2-.3-.4-.3-.7-.3-.2 0-.5 0-.7.2-.2.2-1.1 1.1-1.1 2.7 0 1.6 1.2 3.1 1.4 3.3.2.2 2.3 3.6 5.6 3.6 1.6 0 2.5-1 2.7-1.3.2-.3.2-.5.2-.7 0-.2-.2-.4-.4-.6z" />
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
-                </svg>
-                Chat with us on WhatsApp
-              </a>
-            </div>
-            <div className="mt-4 text-center">
-              <a
-                href={`tel:+254791259510`}
-                className="font-semibold text-blue-700 underline hover:text-blue-900"
-              >
-                Call Us
-              </a>
-            </div>
+              </div>
+
+              {/* Fast-Track CTA */}
+              <div className="pt-8">
+                <div className="card-bespoke bg-slate-50 border-slate-100 p-8">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Fast Contact</h3>
+                  <p className="text-sm text-slate-500 mb-6 font-medium">Connect instantly via WhatsApp.</p>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-bespoke w-full !bg-green-600 hover:!bg-green-700"
+                  >
+                    Chat on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Message Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7"
+            >
+              <div className="card-bespoke !p-12 shadow-2xl border-slate-100">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="font-bold uppercase tracking-widest text-[10px] text-blue-600">Full Name</FormLabel>
+                            <FormControl>
+                              <Input className="rounded-xl border-slate-100 bg-slate-50 h-14 font-medium" placeholder="John Doe" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="font-bold uppercase tracking-widest text-[10px] text-blue-600">Email Address</FormLabel>
+                            <FormControl>
+                              <Input className="rounded-xl border-slate-100 bg-slate-50 h-14 font-medium" placeholder="you@company.com" type="email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="font-bold uppercase tracking-widest text-[10px] text-blue-600">Phone Number</FormLabel>
+                          <FormControl>
+                            <Input className="rounded-xl border-slate-100 bg-slate-50 h-14 font-medium" placeholder="+254 --- --- ---" type="tel" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="font-bold uppercase tracking-widest text-[10px] text-blue-600">Your Message</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="How can we help you?"
+                              className="rounded-xl border-slate-100 bg-slate-50 min-h-[160px] font-medium"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button type="submit" className="btn-bespoke w-full h-16 !text-lg gap-3">
+                      Send Message <Send className="h-5 w-5" />
+                    </Button>
+                  </form>
+                </Form>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
     </div>
   );
+};
+
+// Internal Bespoke Components
+const ContactInfoBlock = ({ icon, title, value, link }: { icon: React.ReactNode, title: string, value: string, link?: string }) => {
+  const content = (
+    <div className="flex gap-6 items-center group cursor-pointer">
+      <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+        {icon}
+      </div>
+      <div>
+        <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">{title}</div>
+        <div className="text-xl font-black text-slate-900 tracking-tighter uppercase group-hover:text-blue-600 transition-colors">{value}</div>
+      </div>
+    </div>
+  );
+
+  return link ? <a href={link}>{content}</a> : <div className="cursor-default">{content}</div>;
 };
 
 export default ContactPage;

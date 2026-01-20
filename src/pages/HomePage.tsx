@@ -8,255 +8,318 @@ import {
   FileText,
   BarChart,
   Quote,
+  ArrowRight,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+
+// Bespoke Solution Item
+const SolutionItem = ({ id, title, desc }: { id: string, title: string, desc: string }) => {
+  return (
+    <motion.div
+      whileHover={{ y: -10 }}
+      className="p-8 border-l border-white/10 hover:border-amber-400 transition-colors bg-slate-800/50 backdrop-blur-sm"
+    >
+      <div className="text-amber-500 font-black text-xs mb-6 opacity-40">{id}</div>
+      <h3 className="text-white text-xl font-bold mb-4 tracking-tight uppercase">{title}</h3>
+      <p className="text-slate-400 text-sm font-medium leading-relaxed">{desc}</p>
+    </motion.div>
+  );
+};
 
 const HomePage = () => {
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-white to-yellow-50 min-h-[80vh]">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Reliable{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-500">
-                  Inventory Management
-                </span>{" "}
-                & Business Support
-              </h1>
-              <p className="text-xl font-medium text-yellow-200">
-                Your Stock, Our Solution
-              </p>
-              <p className="text-lg text-blue-100 max-w-md">
-                From stock takes to data entry, Ayawin Stock Solutions helps you
-                stay organized, compliant, and in control.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500">
-                  <Link to="/quote">Get a Free Quote</Link>
-                </Button>
-                <Button variant="secondary" size="lg" asChild>
-                  <Link to="/services">Our Services</Link>
-                </Button>
+    <div className="bg-white min-h-screen">
+      {/* Bespoke Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-slate-900">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/uploads/stock_background.jpg"
+            alt="Warehouse Background"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/40" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Semantic Hero Text */}
+            <div className="lg:col-span-12 space-y-10 text-center flex flex-col items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <span className="text-amber-500 font-bold uppercase tracking-[0.2em] text-sm mb-6 block">
+                  Professional Inventory Services
+                </span>
+                <h1 className="text-white text-5xl md:text-7xl font-black tracking-tight mb-8">
+                  Simple, <br />
+                  Accurate <br />
+                  <span className="gradient-text from-blue-400 via-white to-amber-400">Inventory Solutions.</span>
+                </h1>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 1 }}
+                className="max-w-2xl mx-auto"
+              >
+                <p className="text-slate-400 text-xl font-medium leading-relaxed mb-10">
+                  We provide accurate stock taking and inventory management services to help your business grow and stay organized.
+                </p>
+                <div className="flex flex-wrap justify-center gap-6">
+                  <Link to="/quote" className="btn-bespoke group">
+                    Get a Quote
+                    <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300">→</span>
+                  </Link>
+                  <Link to="/services" className="px-8 py-5 text-white font-bold uppercase tracking-wider hover:text-amber-500 transition-colors flex items-center">
+                    View Services
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bespoke Core Identity Section */}
+      <section className="section-padding bg-white relative overflow-hidden">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="grid grid-cols-2 gap-6 scale-90 md:scale-100">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="rounded-[2rem] overflow-hidden shadow-xl mt-12"
+                >
+                  <img src="/uploads/ayawin at work4.jpeg" alt="Staff in field" className="aspect-square object-cover" />
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="rounded-[2rem] overflow-hidden shadow-xl"
+                >
+                  <img src="/uploads/ayawin at work1.jpeg" alt="Stock verification" className="aspect-square object-cover" />
+                </motion.div>
               </div>
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-amber-100 rounded-full blur-3xl opacity-30" />
             </div>
 
-            {/* Hero Image */}
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-yellow-300 rounded-full opacity-50" />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-400 rounded-full opacity-40" />
-              <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-[520px] h-[520px] mx-auto">
-                <img
-                  src="/uploads/Homepage.jpeg"
-                  alt="Inventory Management"
-                  className="w-full h-full object-cover object-center"
-                />
+            <div className="space-y-8 order-1 lg:order-2">
+              <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">Our Mission</span>
+              <h2 className="text-slate-900 leading-tight">More Than <br />Just <br />Counting.</h2>
+              <p className="text-xl text-slate-500 leading-relaxed font-medium">
+                We provide precise verification of your stock to minimize losses and maximize profit. Our team ensures that your records match what is actually on your shelves.
+              </p>
+              <div className="pt-6">
+                <Link to="/about" className="text-slate-900 font-bold uppercase tracking-wider border-b-2 border-amber-400 pb-2 hover:text-blue-600 transition-colors">
+                  Learn More About Us →
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 gradient-text">
-            About Ayawin Stock Solutions
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            We provide expert inventory and business support services tailored
-            to your company’s needs. From retail shops to warehouses, we deliver
-            accuracy, efficiency, and peace of mind.
-          </p>
-          <Button asChild variant="outline">
-            <Link to="/about">Learn More About Us</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Services Preview */}
-      <section className="section-padding bg-gray-50">
+      {/* Bespoke Solution Matrix (Services) */}
+      <section className="section-padding bg-slate-900 overflow-hidden">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 gradient-text">
-              Our Services
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions to keep your inventory accurate and your
-              business running smoothly.
+          <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-amber-500 font-bold uppercase tracking-widest text-xs">Our Services</span>
+              <h2 className="text-white mt-4">What We Do.</h2>
+            </div>
+            <p className="text-slate-400 max-w-sm text-lg font-medium">
+              We offer professional inventory services for modern businesses.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ServiceCard
-              title="Stock Takes"
-              description="Accurate inventory counting and reconciliation."
-              icon={<ClipboardCheck className="h-10 w-10 text-blue-600" />}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <SolutionItem
+              id="01"
+              title="Stock Audits"
+              desc="Physical counting and verification of your stock."
             />
-            <ServiceCard
-              title="Stock Management"
-              description="Real-time tracking, low-stock alerts, and full inventory control."
-              icon={<BarChart className="h-10 w-10 text-blue-600" />}
+            <SolutionItem
+              id="02"
+              title="Tech Assets"
+              desc="Managing your IT equipment and hardware."
             />
-            <ServiceCard
-              title="Stock Arrangement"
-              description="Organizing your stock for better flow and tracking."
-              icon={<Database className="h-10 w-10 text-blue-600" />}
+            <SolutionItem
+              id="03"
+              title="KRA Labels"
+              desc="Tax compliance and sticker management services."
             />
-            <ServiceCard
-              title="KRA Stickers"
-              description="Placement and management of KRA-compliant labels."
-              icon={<FileText className="h-10 w-10 text-blue-600" />}
-            />
-            <ServiceCard
-              title="Data Entry"
-              description="Fast and accurate data input for smooth operations."
-              icon={<Database className="h-10 w-10 text-blue-600" />}
-            />
-            <ServiceCard
-              title="Accounting"
-              description="Basic bookkeeping and financial data management."
-              icon={<BarChart className="h-10 w-10 text-blue-600" />}
-            />
-            <ServiceCard
-              title="Auditing"
-              description="Internal reviews to catch errors and ensure compliance."
-              icon={<CheckCircle className="h-10 w-10 text-blue-600" />}
+            <SolutionItem
+              id="04"
+              title="System Sync"
+              desc="Connecting your warehouse to your office systems."
             />
           </div>
 
-          <div className="text-center mt-10">
-            <Button asChild className="btn-primary">
-              <Link to="/services">See All Services</Link>
-            </Button>
+          <div className="mt-20 flex justify-center">
+            <Link to="/services" className="btn-bespoke">
+              View All Services
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Choose Us - Bespoke Logic Grid */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 gradient-text">
-              Why Choose Us
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We pride ourselves on delivering exceptional service that keeps
-              our clients coming back.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-4">
+              <span className="text-amber-500 font-bold uppercase tracking-widest text-xs">Why Choose Us</span>
+              <h2 className="text-slate-900 mt-4 leading-none">Why <br />Businesses <br />Trust Us.</h2>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <FeatureCard
-              title="Accuracy You Can Trust"
-              description="Our meticulous approach ensures reliable inventory data."
-            />
-            <FeatureCard
-              title="Affordable Pricing"
-              description="Transparent pricing with no hidden fees or surprises."
-            />
-            <FeatureCard
-              title="Fast Turnaround Times"
-              description="We work efficiently to minimize disruption to your business."
-            />
-            <FeatureCard
-              title="Professional Team"
-              description="Experienced professionals who understand your business needs."
-            />
+            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="card-bespoke">
+                <div className="text-blue-600 font-black text-4xl mb-6">01</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">High Accuracy</h3>
+                <p className="text-slate-500 text-sm font-medium">We ensure your records are correct, minimizing losses and protecting your assets.</p>
+              </div>
+              <div className="card-bespoke">
+                <div className="text-blue-600 font-black text-4xl mb-6">02</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">Fast Service</h3>
+                <p className="text-slate-500 text-sm font-medium">Our teams are ready to deploy quickly across East Africa to get the job done.</p>
+              </div>
+              <div className="card-bespoke">
+                <div className="text-blue-600 font-black text-4xl mb-6">03</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">Smart Technology</h3>
+                <p className="text-slate-500 text-sm font-medium">We use modern cloud systems to give you real-time visibility of your stock.</p>
+              </div>
+              <div className="card-bespoke">
+                <div className="text-blue-600 font-black text-4xl mb-6">04</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">Real Value</h3>
+                <p className="text-slate-500 text-sm font-medium">We help organize your business to save money and improve efficiency.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Our Work & Moments Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-3xl font-bold mb-8 text-center gradient-text">Our Work & Moments</h2>
+      <section className="section-padding bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100/50 rounded-full blur-[120px] -mr-20 -mt-20" />
+        <div className="container-custom relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black mb-4 gradient-text">Our Work & Moments</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              A glimpse into our daily operations, field audits, and the team in action across various locations.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Sample Photo */}
-            <div className="rounded-lg overflow-hidden shadow hover:scale-[1.03] transition bg-white">
-              <img
-                src="/uploads/martin.jpg"
-                alt="Inventory Audit - Nairobi"
-                className="w-full h-64 object-cover object-center"
-              />
-              <div className="p-4">
-                <p className="font-semibold text-blue-700">Inventory Audit - Nairobi</p>
-              </div>
-            </div>
-            {/* Sample Video */}
-            <div className="rounded-lg overflow-hidden shadow hover:scale-[1.03] transition bg-white">
-              <video controls className="w-full h-64 object-cover object-center bg-black">
-                <source src="/uploads/ayawin.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
+            {/* Gallery Items */}
+            <WorkItem
+              src="/uploads/ayawin at work.jpeg"
+              title="Inventory Audit"
+              location="Warehouse Facility"
+              description="Detailed physical count and reconciliation process."
+            />
+            <WorkItem
+              src="/uploads/ayawin at work1.jpeg"
+              title="Stock Arrangement"
+              location="Retail Partner"
+              description="Optimizing shelf space and implementing FIFO systems."
+            />
+            <WorkItem
+              src="/uploads/ayawin at work2.jpeg"
+              title="Compliance Check"
+              location="Distribution Center"
+              description="Ensuring all stock meets regulatory and internal standards."
+            />
+
+            {/* Video Feature */}
+            <div className="lg:col-span-2 rounded-[2rem] overflow-hidden shadow-2xl group relative h-[400px]">
+              <video autoPlay muted loop className="w-full h-full object-cover">
+                <source src="/uploads/ayawin at work10.jpeg.mp4" type="video/mp4" />
               </video>
-              <div className="p-4">
-                <p className="font-semibold text-blue-700">promo vedio</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                <span className="bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-3">Featured Video</span>
+                <h3 className="text-2xl font-bold text-white mb-2">Ayawin in Motion</h3>
+                <p className="text-slate-200 max-w-md">Experience our team's dedication and precision in every project we undertake.</p>
               </div>
             </div>
-            {/* Another Sample Photo */}
-            <div className="rounded-lg overflow-hidden shadow hover:scale-[1.03] transition bg-white">
+
+            <WorkItem
+              src="/uploads/ayawin at work3.jpeg"
+              title="Data Entry Operations"
+              location="Headquarters"
+              description="Digitizing manual records for real-time inventory tracking."
+            />
+
+            <WorkItem
+              src="/uploads/ayawin at work4.jpeg"
+              title="Team Briefing"
+              location="Field Site"
+              description="Coordinating complex stock takes for large-scale warehouses."
+            />
+            <WorkItem
+              src="/uploads/ayawin at work5.jpeg"
+              title="Quality Assurance"
+              location="Client Site"
+              description="Verifying stock condition during the audit process."
+            />
+            <WorkItem
+              src="/uploads/ayawin at work6.jpeg"
+              title="System Integration"
+              location="Tech Hub"
+              description="Deploying custom ERP solutions for seamless stock management."
+            />
+          </div>
+
+          <div className="text-center mt-16">
+            <Button asChild variant="outline" size="lg" className="rounded-full px-10 border-slate-200 hover:bg-slate-900 hover:text-white transition-all">
+              <Link to="/our-work">Explore Our Full Gallery</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial & Social Proof */}
+      <section className="section-padding bg-slate-50 relative overflow-hidden">
+        <div className="container-custom relative z-10 text-center">
+          <Quote className="mx-auto text-blue-100 w-24 h-24 mb-8" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="max-w-4xl mx-auto"
+          >
+            <p className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tighter mb-12">
+              "Ayawin Stock Solutions didn't just count our inventory; they revolutionized our warehouse logic. Their precision is unmatched."
+            </p>
+            <div className="flex items-center justify-center gap-4">
               <img
-                src="/uploads/WhatsApp Image 2025-09-29 at 23.38.27 (2).jpeg"
-                alt="Stock Arrangement - Kisumu"
-                className="w-full h-64 object-cover object-center"
+                src="/uploads/Tamara.jpg"
+                alt="Client"
+                className="w-16 h-16 rounded-full border-4 border-white shadow-xl object-cover"
               />
-              <div className="p-4">
-                <p className="font-semibold text-blue-700">Stock Arrangement - Kisumu</p>
+              <div className="text-left">
+                <div className="font-black text-slate-900 uppercase tracking-tighter">Strategic Partner</div>
+                <div className="text-amber-600 font-bold text-xs uppercase tracking-widest">Retail Giant Kenya</div>
               </div>
             </div>
-          </div>
-          <div className="text-center mt-8">
-            <Button asChild variant="outline">
-              <Link to="/our-work">View More Work & Moments</Link>
-            </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="section-padding bg-gradient-to-r from-blue-50 to-blue-100">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">What Our Clients Say</h2>
-            <div className="bg-white p-8 rounded-xl shadow-lg relative">
-              <Quote className="absolute -top-6 left-6 text-blue-600 w-12 h-12 opacity-30" />
-              <p className="text-lg text-gray-700 italic mb-6">
-                "Ayawin Stock Solution helped us organize our inventory in just
-                two days. Super efficient!"
-              </p>
-              <div className="flex items-center justify-center gap-3">
-                <img
-                  src="/uploads/Tamara.jpg"
-                  alt="Client"
-                  className="w-12 h-12 rounded-full border border-blue-200 object-cover object-center"
-                />
-                <p className="font-medium text-gray-800">— Happy Client</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section-padding bg-blue-600 text-white">
-        <div className="container-custom text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg mb-8">
-            Let us help you take control of your inventory and streamline your
-            business operations.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500">
-              <Link to="/quote">Request a Quote</Link>
-            </Button>
-            <Button asChild size="lg" variant="secondary">
-              <Link to="/contact">Contact Us</Link>
-            </Button>
+      {/* Final Bespoke CTA */}
+      <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 pointer-events-none" />
+        <div className="container-custom relative z-10 text-center">
+          <h2 className="text-white mb-10 max-w-3xl mx-auto leading-tight">Accurate Records Start Here.</h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            <Link to="/quote" className="btn-bespoke">
+              Request Your Audit
+            </Link>
+            <Link to="/contact" className="px-10 py-5 border-2 border-white/20 rounded-full font-bold uppercase tracking-wider hover:border-amber-400 hover:text-amber-400 transition-all">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>
@@ -264,40 +327,31 @@ const HomePage = () => {
   );
 };
 
-// Service Card Component
-const ServiceCard = ({
-  title,
-  description,
-  icon,
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}) => {
+// Bespoke Work Item
+const WorkItem = ({ src, title, location, description }: { src: string; title: string; location: string; description: string }) => {
   return (
-    <Card className="transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-t-4 border-blue-600">
-      <CardContent className="p-6 text-center">
-        <div className="flex justify-center mb-4">{icon}</div>
-        <h3 className="text-xl font-bold mb-2 text-blue-700">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </CardContent>
-    </Card>
-  );
-};
-
-// Feature Card Component
-const FeatureCard = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => {
-  return (
-    <div className="p-6 text-center rounded-lg border border-gray-100 bg-white transition-all duration-300 hover:shadow-md">
-      <h3 className="text-xl font-semibold mb-3 text-blue-700">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
+    <motion.div
+      whileHover={{ y: -10 }}
+      className="group relative rounded-[2rem] overflow-hidden shadow-2xl bg-white"
+    >
+      <div className="aspect-[4/3] overflow-hidden">
+        <img
+          src={src}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+        />
+      </div>
+      <div className="p-8">
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <span className="text-blue-600 font-black uppercase tracking-[0.2em] text-[10px] mb-2 block">{location}</span>
+            <h3 className="text-slate-900 text-xl font-bold tracking-tight uppercase">{title}</h3>
+          </div>
+          <ArrowRight className="text-amber-500 h-6 w-6 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+        </div>
+        <p className="text-slate-500 text-sm font-medium leading-relaxed">{description}</p>
+      </div>
+    </motion.div>
   );
 };
 

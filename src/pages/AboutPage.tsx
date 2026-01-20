@@ -1,193 +1,216 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { CheckCircle, Users, Target, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle, Users, Target, Heart, ArrowRight } from "lucide-react";
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="text-gray-900">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-700 to-blue-600 py-20 md:py-28 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight">
-            About Ayawin Stock Solutions
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-95 leading-relaxed">
-            Get to know who we are, what we stand for, and why we're passionate about helping businesses thrive through better inventory management.
-          </p>
+    <div className="bg-white min-h-screen">
+      {/* Bespoke Header */}
+      <section className="pt-32 pb-16 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-600/10 via-transparent to-transparent" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/20 rounded-full blur-[100px]" />
         </div>
-      </section>
 
-      {/* Who We Are Section (background image + overlay) */}
-      <section
-        className="relative h-screen w-full bg-cover"
-        style={{
-          backgroundImage: "url('/uploads/Plack.png')", // ✅ fixed path
-          backgroundPosition: "center top",
-          backgroundSize: "cover",
-        }}
-      >
-        {/* stronger overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
-        
-        {/* Content moved to bottom */}
-        <div className="container-custom relative z-10 flex items-end h-full pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* left: text */}
-            <div className="text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 drop-shadow-lg">Who We Are</h2>
-              <p className="text-lg mb-6 leading-relaxed text-white/90">
-                Ayawin Stock Solutions was founded with a mission to help businesses take control of their inventory and operations.
-                With experience in retail, logistics, and compliance, we understand the challenges companies face when things aren't well-tracked or organized.
-              </p>
-              <p className="text-lg mb-6 leading-relaxed text-white/90">
-                Our goal? To simplify your processes and save you time. We believe that accurate inventory management is the foundation of a successful business, and we're here to help you build that foundation.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
-                  <Link to="/quote">Request a Quote</Link>
-                </Button>
-
-                {/* Updated: Explore Services button now matches */}
-                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
-                  <Link to="/services">Explore Services</Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* right: empty for balance */}
-            <div aria-hidden />
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision — each with background + overlay so text is visible */}
-      <section className="section-padding">
-        <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Mission card with background */}
-          <div
-            className="relative rounded-xl overflow-hidden shadow-lg"
-            style={{ backgroundImage: "url('/uploads/mission.jpg')" }} // ✅ fixed
-          >
-            <div className="absolute inset-0 bg-black/55" />
-            <div className="relative p-8 text-white">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
-                  <Target className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold">Our Mission</h3>
-              </div>
-              <p className="leading-relaxed text-white/90">
-                To provide accurate, efficient, and affordable inventory and business support services that empower companies to grow confidently.
-                We aim to be the reliable partner that helps businesses maintain control over their assets and operations.
-              </p>
-            </div>
-          </div>
-
-          {/* Vision card with background */}
-          <div
-            className="relative rounded-xl overflow-hidden shadow-lg"
-            style={{ backgroundImage: "url('/uploads/vision.jpg')" }} // ✅ fixed
-          >
-            <div className="absolute inset-0 bg-black/55" />
-            <div className="relative p-8 text-white">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
-                  <Heart className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold">Our Vision</h3>
-              </div>
-              <p className="leading-relaxed text-white/90">
-                To be a trusted name in inventory and business management across Kenya and beyond. We strive to set the standard for excellence in inventory solutions,
-                helping businesses of all sizes optimize their operations and achieve their goals.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values — soft patterned/gradient background */}
-      <section className="section-padding relative overflow-hidden" aria-hidden={false}>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-indigo-50" />
-        {/* subtle pattern overlay */}
-        <div className="absolute inset-0 bg-[url('/uploads/pattern.png')] opacity-5 bg-repeat" /> {/* ✅ fixed */}
         <div className="container-custom relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl font-bold mb-3 text-indigo-900">Our Core Values</h2>
-            <p className="text-lg text-gray-700">
-              These principles guide everything we do as we work with clients and support their businesses.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <span className="text-amber-500 font-bold uppercase tracking-[0.2em] text-sm mb-6 block">
+              Our Story
+            </span>
+            <h1 className="text-white mb-6">
+              Making Inventory <br />
+              <span className="gradient-text from-blue-400 via-white to-amber-400">Simple & Accurate.</span>
+            </h1>
+            <p className="max-w-3xl mx-auto text-slate-400 text-xl font-medium leading-relaxed">
+              Founded to help businesses track their stock with precision and ease. Ayawin Stock Solutions is the future of logistics management in East Africa.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Narrative Section: Who We Are */}
+      <section className="section-padding bg-white relative">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div className="relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-slate-100"
+              >
+                <img
+                  src="/uploads/erp.png"
+                  alt="Ayawin Systems"
+                  className="w-full h-auto"
+                />
+              </motion.div>
+              {/* Floating Stat Corner */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                className="absolute -bottom-10 -right-10 bg-white/90 backdrop-blur shadow-xl p-10 rounded-[2.5rem] hidden md:block border border-slate-100"
+              >
+                <div className="text-blue-600 font-bold text-4xl mb-2">100+</div>
+                <div className="text-[10px] font-bold text-slate-900 uppercase tracking-widest whitespace-nowrap">Happy Clients <br />Managed Successfully</div>
+              </motion.div>
+            </div>
+
+            <div className="space-y-10">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">Our Origins</span>
+                <h2 className="text-slate-900 mt-4 leading-tight">Born from <br />Experience. <br />Driven by <br />Results.</h2>
+                <div className="w-24 h-1 bg-amber-400 mt-8" />
+              </motion.div>
+
+              <div className="space-y-6">
+                <p className="text-xl text-slate-500 font-medium leading-relaxed">
+                  Ayawin was created to solve a major problem: messy warehouses and inaccurate records. We understand both the physical work and the digital needs of modern business.
+                </p>
+                <p className="text-lg text-slate-400 leading-relaxed font-medium italic">
+                  "Our mission is to turn chaotic stockrooms into organized assets, ensuring every shilling is accounted for."
+                </p>
+              </div>
+
+              <div className="pt-6">
+                <Link to="/contact" className="btn-bespoke group">
+                  Get in Touch
+                  <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300">→</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bespoke Core Mandates (Mission & Vision) */}
+      <section className="section-padding bg-slate-50">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="card-bespoke group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-blue-600 rounded-[1.25rem] flex items-center justify-center mb-8 shadow-lg shadow-blue-200">
+                  <Target className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-6 tracking-tight">OUR MISSION</h3>
+                <p className="text-slate-500 text-lg font-medium leading-relaxed">
+                  To provide absolute clarity for businesses in East Africa through accurate inventory audits and reliable data systems.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+              className="card-bespoke group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-amber-500 rounded-[1.25rem] flex items-center justify-center mb-8 shadow-lg shadow-amber-200">
+                  <Heart className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-6 tracking-tight">OUR VISION</h3>
+                <p className="text-slate-500 text-lg font-medium leading-relaxed">
+                  To be the gold standard of logistics management in Kenya, helping businesses grow and succeed.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Logic Pillars (Core Values) */}
+      <section className="section-padding bg-white overflow-hidden">
+        <div className="container-custom">
+          <div className="text-center mb-24">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">Our Values</span>
+            <h2 className="text-slate-900 mt-4">The Ayawin Standard.</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <ValueCard
-              title="Reliability"
-              description="We deliver on our promises and can be counted on when it matters most."
+              id="01"
+              title="Integrity"
+              desc="We are honest and transparent in all our records."
             />
             <ValueCard
-              title="Professionalism"
-              description="We maintain the highest standards in all our interactions and services."
+              id="02"
+              title="Precision"
+              desc="We count everything carefully to eliminate errors."
             />
             <ValueCard
-              title="Accuracy"
-              description="We are meticulous in our work because we know details matter."
+              id="03"
+              title="Innovation"
+              desc="Using technology to do things better and faster."
             />
             <ValueCard
-              title="Client-First"
-              description="Your needs and goals are our priority in everything we do."
+              id="04"
+              title="Security"
+              desc="Protecting your assets with careful oversight."
             />
           </div>
         </div>
       </section>
 
-      {/* Meet the Team */}
-      <section className="section-padding bg-gray-50">
+      {/* Professional Leadership (Team) */}
+      <section className="section-padding bg-slate-900">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl font-bold mb-3 flex items-center justify-center gap-3 text-indigo-900">
-              <Users className="h-7 w-7 text-blue-600" /> Meet the Team
-            </h2>
-            <p className="text-lg text-gray-600">
-              At Ayawin Stock Solutions, our success is built on a foundation of experienced, passionate professionals.
+          <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div className="max-w-2xl text-left">
+              <span className="text-amber-500 font-bold uppercase tracking-widest text-xs">Leadership</span>
+              <h2 className="text-white mt-4">Meet the Team.</h2>
+            </div>
+            <p className="text-slate-400 max-w-sm text-lg font-medium">
+              Experts in logistics and systems.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <TeamCard
               name="Martin Koyih"
-              role="Founder / Manager"
-              image="/uploads/martin.jpg" // ✅ fixed
-              bio="A visionary leader with deep experience in business operations and inventory management. Martin ensures everything runs smoothly at Ayawin."
+              role="Strategic Operations"
+              image="/uploads/martin.jpg"
+              bio="Commanding a decade of high-stakes retail logistics. Martin leads our field teams with an uncompromising focus on audit integrity."
             />
 
             <TeamCard
               name="Reinhard Bonnke"
-              role="Technical Team"
-              image="/uploads/bonnke.jpg" // ✅ fixed
-              bio="Focused on digital solutions and inventory technologies, Reinhard is the mind behind the systems powering Ayawin’s efficiency."
+              role="Systems Architecture"
+              image="/uploads/bonnke.jpg"
+              bio="The digital architect behind Ayawin's ERP ecosystem. Reinhard ensures that every physical count is translated into actionable intelligence."
               contact="0745617108"
             />
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4 text-indigo-900">Ready to Work With Us?</h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Let's discuss how we can help streamline your inventory management and business operations.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-                <Link to="/quote">Request a Quote</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-indigo-200 text-indigo-700 hover:bg-indigo-50">
-                <Link to="/services">Explore Our Services</Link>
-              </Button>
-            </div>
+      {/* Final Bespoke CTA */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-slate-50/50" />
+        <div className="container-custom relative z-10 text-center">
+          <h2 className="text-slate-900 mb-10 max-w-2xl mx-auto">Ready for Flawless Records?</h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            <Link to="/quote" className="btn-bespoke">
+              Begin Your Audit
+            </Link>
           </div>
         </div>
       </section>
@@ -195,20 +218,21 @@ const AboutPage: React.FC = () => {
   );
 };
 
-// ValueCard component
-const ValueCard: React.FC<{ title: string; description: string }> = ({ title, description }) => {
+// Bespoke Value Card
+const ValueCard: React.FC<{ id: string; title: string; desc: string }> = ({ id, title, desc }) => {
   return (
-    <div className="p-6 text-center rounded-xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-50 text-blue-600 mb-4">
-        <CheckCircle className="h-6 w-6" />
-      </div>
-      <h3 className="text-xl font-semibold mb-2 text-indigo-900">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
+    <motion.div
+      whileHover={{ y: -10 }}
+      className="p-10 card-bespoke flex flex-col items-center text-center group"
+    >
+      <CheckCircle className="h-12 w-12 text-amber-500 mb-6 group-hover:scale-110 transition-transform" />
+      <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tight">{title}</h3>
+      <p className="text-slate-500 text-sm font-medium leading-relaxed">{desc}</p>
+    </motion.div>
   );
 };
 
-// TeamCard component
+// Bespoke Team Card
 const TeamCard: React.FC<{
   name: string;
   role: string;
@@ -217,23 +241,38 @@ const TeamCard: React.FC<{
   contact?: string;
 }> = ({ name, role, image, bio, contact }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6 text-center transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
-      <div className="w-32 h-32 mx-auto mb-4 relative">
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-blue-200 to-purple-200 blur-sm opacity-40" />
-        <img src={image} alt={name} className="relative rounded-full w-full h-full object-cover border-4 border-white shadow-sm" />
-      </div>
-
-      <h3 className="text-xl font-semibold">{name}</h3>
-      <p className="text-blue-600 font-medium mb-3 inline-block px-3 py-1 rounded-full bg-blue-50">{role}</p>
-      <p className="text-gray-600 text-sm mb-4">{bio}</p>
-
-      {contact && (
-        <div className="mt-2">
-          <a href={`tel:${contact}`} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
-            Call / WhatsApp: {contact}
-          </a>
+    <div className="group relative">
+      <div className="card-bespoke flex flex-col md:flex-row items-center gap-10 p-10 bg-slate-800 border-white/5 hover:border-blue-500/30 transition-all duration-700">
+        <div className="w-48 h-48 md:w-56 md:h-56 shrink-0 relative">
+          <div className="absolute inset-0 bg-blue-600 rotate-6 group-hover:rotate-12 transition-transform duration-700 rounded-[2.5rem] -z-10" />
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover rounded-[2.5rem] shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700"
+          />
         </div>
-      )}
+
+        <div className="text-center md:text-left space-y-4">
+          <div>
+            <span className="text-amber-500 font-black uppercase tracking-widest text-[10px] b-2 block">Executive Board</span>
+            <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{name}</h3>
+            <div className="text-blue-400 font-bold uppercase tracking-widest text-xs mt-1">{role}</div>
+          </div>
+          <p className="text-slate-400 text-sm font-medium leading-relaxed">
+            {bio}
+          </p>
+          {contact && (
+            <div className="pt-4">
+              <a
+                href={`tel:${contact}`}
+                className="inline-flex items-center gap-3 text-white font-black uppercase tracking-tighter border-b border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all pb-2"
+              >
+                Secure Comms <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
