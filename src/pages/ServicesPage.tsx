@@ -63,7 +63,7 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             <ServiceModule
               id="01"
@@ -171,7 +171,7 @@ const ServiceModule = ({ id, title, image, description, details }: ServiceModule
       variants={fadeInUp}
       className="card-bespoke group p-0 overflow-hidden flex flex-col h-full bg-slate-50 border-slate-100 hover:border-blue-200"
     >
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative aspect-square overflow-hidden">
         <img
           src={image}
           alt={title}
